@@ -182,16 +182,10 @@ do -- * Load Region of Déjà Vu
 			end
 		end)
 
-		local EncodingService = game:GetService("EncodingService")
-		local EncodingService_base64encode = function(raw)
-			return buffer.tostring(EncodingService:Base64Encode(buffer.fromstring(raw)))
-		end
-
 		-- * Tests if base64encode exists and works properly then benchmark it
 		if base64encode and base64encode("\1\0\0\0\1") == "AQAAAAE=" then
 			if rbxcrypt_base64encode then
-				base64encode =
-					benchmark({ base64encode, rbxcrypt_base64encode, EncodingService_base64encode }, test_str)
+				base64encode = benchmark({ base64encode, rbxcrypt_base64encode }, test_str)
 			end
 		else
 			base64encode = rbxcrypt_base64encode

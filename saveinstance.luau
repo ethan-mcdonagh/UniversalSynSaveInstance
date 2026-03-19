@@ -2257,7 +2257,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		SaveCacheInterval = 0x1600 * 10,
 		ShowStatus = true,
 		KillAllScripts = true,
-		SafeMode = false,
+		SafeMode = true,
 		ShutdownWhenDone = false,
 		AntiIdle = true,
 		Anonymous = false,
@@ -2774,11 +2774,9 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		return Size
 	end
 
-	local RunService = game:GetService("RunService")
+	local RunService = service.RunService
 	local function wait_for_render()
-		pcall(function()
-			RunService.RenderStepped:Wait()
-		end)
+		RunService.RenderStepped:Wait()
 	end
 
 	local Loading

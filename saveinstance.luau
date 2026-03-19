@@ -2774,7 +2774,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		return Size
 	end
 
-	local RunService = service.RunService
+	local RunService = game:GetService("RunService")
 	local function wait_for_render()
 		RunService.RenderStepped:Wait()
 	end

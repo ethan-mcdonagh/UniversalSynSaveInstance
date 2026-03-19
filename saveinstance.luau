@@ -2776,7 +2776,9 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 
 	local RunService = game:GetService("RunService")
 	local function wait_for_render()
-		RunService.RenderStepped:Wait()
+		pcall(function()
+			RunService.RenderStepped:Wait()
+		end)
 	end
 
 	local Loading
